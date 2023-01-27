@@ -1,89 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      .wrapper {
-        display: flex;
-        flex-flow: column;
-        height: 100vh;
-        width: 100vw;
-        justify-content: center;
-        align-items: center;
-      }
 
-      #no {
-        transition: transform 150ms;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .wrapper {
+      display: flex;
+      flex-flow: column;
+      height: 100vh;
+      width: 100vw;
+      justify-content: center;
+      align-items: center;
+    }
 
-      .buttons {
-        display: flex;
-      }
+    #no {
+      transition: transform 150ms;
+    }
 
-      .buttons div {
-        padding: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="wrapper">
-      <h1>Вы гей?</h1>
-      <div class="buttons"">
-        <div><button id="yes">Да</button></div>
-        <div id="no"><button>Нет</button></div>
-      </div>
-    </div>
-    <script>
-      const noBtn = document.querySelector("#no");
-      const yesBtn = document.querySelector("#yes");
-      const wrapper = document.querySelector(".wrapper");
+    .buttons {
+      display: flex;
+    }
 
-      noBtn.addEventListener("mouseover", onNoBtnHover);
-      noBtn.addEventListener("click", onNoBtnClick);
-      yesBtn.addEventListener("click", onYesBtnClick);
+    .buttons div {
+      padding: 10px;
+    }
+  </style>
+</head>
 
-      let number1 = 0;
-      let number2 = 0;
+<body>
+  <div class="wrapper">
+    <h1>Вы гей?</h1>
+    <div class="buttons"">
+        <div><button id=" yes">Да</button></div>
+    <div id="no"><button>Нет</button></div>
+  </div>
+  </div>
+  <script>
+    const noBtn = document.querySelector("#no");
+    const yesBtn = document.querySelector("#yes");
+    const wrapper = document.querySelector(".wrapper");
 
-      function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
-      }
-      function onNoBtnHover() {
-const randomNum1 = getRandomInt(50, 70)
-const randomNum2 = getRandomInt(50, 70)
-const randomSituation = getRandomInt(1, 4)
+    let number1 = 0;
+    let number2 = 0;
+
+    noBtn.addEventListener("mouseover", onNoBtnHover);
+    noBtn.addEventListener("click", onNoBtnClick);
+    yesBtn.addEventListener("click", onYesBtnClick);
 
 
-        console.dir(noBtn);
-        if (randomSituation === 1) {
-          number1 += randomNum1;
-          number2 += randomNum2;
-        }
-        if (randomSituation === 2) {
-          number1 -= randomNum1;
-          number2 += randomNum2;
-        }
-        if (randomSituation === 3) {
-          number1 -= randomNum1;
-          number2 += randomNum2;
-        }
-        if (randomSituation === 4) {
-          number1 -= randomNum1;
-          number2 -= randomNum2;
-        }
-        noBtn.style.transform = `translate(${number1}%, ${number2}%)`;
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+    }
+
+    function onNoBtnHover() {
+      const randomNum1 = getRandomInt(50, 70)
+      const randomNum2 = getRandomInt(50, 70)
+      const randomSituation = getRandomInt(1, 5)
+
+
+      if (randomSituation === 1) {
+        number1 += randomNum1;
+        number2 += randomNum2;
       }
-      function onYesBtnClick() {
-        wrapper.innerHTML = `<h1>Я знаю</h1>`;
+
+      if (randomSituation === 2) {
+        number1 -= randomNum1;
+        number2 += randomNum2;
       }
-      function onNoBtnClick(){
-        onNoBtnHover()
+
+      if (randomSituation === 3) {
+        number1 -= randomNum1;
+        number2 += randomNum2;
       }
-    </script>
-  </body>
+
+      if (randomSituation === 4) {
+        number1 -= randomNum1;
+        number2 -= randomNum2;
+      }
+      noBtn.style.transform = `translate(${number1}%, ${number2}%)`;
+    }
+    function onYesBtnClick() {
+      wrapper.innerHTML = `<h1>Я знаю</h1>`;
+    }
+    function onNoBtnClick() {
+      onNoBtnHover()
+    }
+  </script>
+</body>
+
 </html>
