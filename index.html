@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrapper {
+        display: flex;
+        flex-flow: column;
+        height: 100vw;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #no {
+        transition: transform 150ms;
+      }
+
+      .buttons {
+        display: flex;
+      }
+
+      .buttons div {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Вы гей?</h1>
+      <div class="buttons"">
+        <div><button id="yes">Да</button></div>
+        <div id="no"><button>Нет</button></div>
+      </div>
+    </div>
+    <script>
+      const noBtn = document.querySelector("#no");
+      const yesBtn = document.querySelector("#yes");
+      const wrapper = document.querySelector(".wrapper");
+
+      noBtn.addEventListener("mouseover", onNoBtnHover);
+      noBtn.addEventListener("click", onNoBtnClick);
+      yesBtn.addEventListener("click", onYesBtnClick);
+
+      let number1 = 0;
+      let number2 = 0;
+
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+      }
+      function onNoBtnHover() {
+        console.dir(noBtn);
+        if (getRandomInt(1, 4) === 1) {
+          number1 += getRandomInt(70, 100);
+          number2 += getRandomInt(70, 100);
+        }
+        if (getRandomInt(1, 4) === 2) {
+          number1 += getRandomInt(-70, -100);
+          number2 += getRandomInt(70, 100);
+        }
+        if (getRandomInt(1, 4) === 3) {
+          number1 += getRandomInt(70, 100);
+          number2 += getRandomInt(-70, -100);
+        }
+        if (getRandomInt(1, 4) === 4) {
+          number1 += getRandomInt(-70, -100);
+          number2 += getRandomInt(-70, -100);
+        }
+        noBtn.style.transform = `translate(${number1}%, ${number2}%)`;
+      }
+      function onYesBtnClick() {
+        wrapper.innerHTML = `<h1>Я знаю</h1>`;
+      }
+      function onNoBtnClick(){
+        onNoBtnHover()
+      }
+    </script>
+  </body>
+</html>
