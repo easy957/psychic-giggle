@@ -54,22 +54,27 @@
         return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
       }
       function onNoBtnHover() {
+const randomNum1 = getRandomInt(50, 70)
+const randomNum2 = getRandomInt(50, 70)
+const randomSituation = getRandomInt(1, 4)
+
+
         console.dir(noBtn);
-        if (getRandomInt(1, 4) === 1) {
-          number1 += getRandomInt(70, 100);
-          number2 += getRandomInt(70, 100);
+        if (randomSituation === 1) {
+          number1 += randomNum1;
+          number2 += randomNum2;
         }
-        if (getRandomInt(1, 4) === 2) {
-          number1 += getRandomInt(-70, -100);
-          number2 += getRandomInt(70, 100);
+        if (randomSituation === 2) {
+          number1 -= randomNum1;
+          number2 += randomNum2;
         }
-        if (getRandomInt(1, 4) === 3) {
-          number1 += getRandomInt(70, 100);
-          number2 += getRandomInt(-70, -100);
+        if (randomSituation === 3) {
+          number1 -= randomNum1;
+          number2 += randomNum2;
         }
-        if (getRandomInt(1, 4) === 4) {
-          number1 += getRandomInt(-70, -100);
-          number2 += getRandomInt(-70, -100);
+        if (randomSituation === 4) {
+          number1 -= randomNum1;
+          number2 -= randomNum2;
         }
         noBtn.style.transform = `translate(${number1}%, ${number2}%)`;
       }
